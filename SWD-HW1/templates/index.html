@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block main %}
+<table>
+    <tr>
+        <th>#</th>
+        <th>Title</th>
+        <th>Type</th>
+        <th>Tags</th>
+    </tr>
+    <!-- TODO #1: using a for loop, render recipes using parameter "recipes" -->
+    {% for recipe in recipes %}
+    {% if loop.index % 2 == 0 %}
+        <tr class="even_row">
+    {% else %}
+        <tr class="odd_row">
+    {% endif %}
+            <td>{{ loop.index }}</td>
+            <td>{{ recipe.title }}</td>
+            <td>{{ recipe.type }}</td>
+            <td>{{ recipe.tags }}</td>
+        </tr>
+    {% endfor %}
+</table>
+<button
+  type="button"
+  class="create_button"
+    onclick='window.location.href="{{ url_for("create_recipe") }}"'
+>
+  Create
+</button>
+{% endblock %}
